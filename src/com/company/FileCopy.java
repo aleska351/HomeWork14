@@ -27,7 +27,6 @@ public class FileCopy {
            4756 секунд - файл 1.43 Gb = примерно 2.75 Мегабайт в секунду
     */
     private static void copyBytes(String inputFile, String outputFile) {
-        // long start = System.currentTimeMillis();
         long start = System.nanoTime();
         try (InputStream input = new FileInputStream(inputFile);
              OutputStream output = new FileOutputStream(outputFile);) {
@@ -45,7 +44,6 @@ public class FileCopy {
             e.printStackTrace();
         } finally {
             long finish = System.nanoTime();
-            //long finish = System.currentTimeMillis();
             long timeElapsed = finish - start;
             System.out.println(timeElapsed / 1000);
         }
@@ -68,7 +66,6 @@ public class FileCopy {
     */
     private static void copyBuffer(String inputFile, String outputFile) {
         long start = System.nanoTime();
-        //long start = System.currentTimeMillis();
         try (InputStream input = new FileInputStream(inputFile);
              OutputStream output = new FileOutputStream(outputFile);) {
             byte[] buffer = new byte[65536];
@@ -82,7 +79,6 @@ public class FileCopy {
             e.printStackTrace();
         } finally {
             long finish = System.nanoTime();
-            //long finish = System.currentTimeMillis();
             long timeElapsed = finish - start;
             System.out.println(timeElapsed / 1000);
         }
@@ -105,7 +101,6 @@ public class FileCopy {
      */
     private static void copyBufferedByte(String inputFile, String outputFile) {
         long start = System.nanoTime();
-        //  long start = System.currentTimeMillis();
         try (InputStream input = new BufferedInputStream(new FileInputStream(inputFile));
              OutputStream output = new BufferedOutputStream(new FileOutputStream(outputFile))) {
             byte[] buffer = new byte[65536];
@@ -119,7 +114,6 @@ public class FileCopy {
             e.printStackTrace();
         } finally {
             long finish = System.nanoTime();
-            // long finish = System.currentTimeMillis();
             long timeElapsed = finish - start;
             System.out.println(timeElapsed / 1000);
         }
@@ -142,7 +136,6 @@ public class FileCopy {
      */
     private static void copyBufferedBuffer(String inputFile, String outputFile) {
         Instant start = Instant.now();
-        //  long start = System.currentTimeMillis();
         try (InputStream input = new BufferedInputStream(new FileInputStream(inputFile));
              OutputStream output = new BufferedOutputStream(new FileOutputStream(outputFile))) {
 
@@ -159,7 +152,6 @@ public class FileCopy {
         } finally {
             //   long finish = System.currentTimeMillis();
             Instant finish = Instant.now();
-            //  long timeElapsed = finish - start;
             long timeElapsed = Duration.between(start, finish).toMillis();
             System.out.println(timeElapsed / 1000);
         }
